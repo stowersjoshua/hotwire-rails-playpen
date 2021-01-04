@@ -1,14 +1,16 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %meta{ :content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type" }
     %title ChatterBox
-    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}
+    %meta{ content: "width=device-width,initial-scale=1", name: "viewport" }
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all'
     = yield :head
     = turbo_include_tags
     = stimulus_include_tags
+    = javascript_packs_with_chunks_tag 'application'
+    = stylesheet_packs_with_chunks_tag 'application'
   %body
     = yield
