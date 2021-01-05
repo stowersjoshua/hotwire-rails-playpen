@@ -1,16 +1,18 @@
-%h1 Showing: #{@room.name}
 %p#notice= notice
 
 = turbo_stream_from @room
 
-= turbo_frame_tag "room" do
-  = render @room
-  %p
-    = link_to 'Edit', edit_room_path(@room)
-    |
-    \#{link_to 'Back', rooms_path, "data-turbo-frame": "_top"}
+= turbo_frame_tag 'room' do
+  .card.mt-2
+    .card-body
+      = render @room
+    .card-footer.text-end
+      = link_to 'Edit', edit_room_path(@room), class: 'text-info mx-2'
+      = link_to 'Back', rooms_path, "data-turbo-frame": '_top', class: 'text-secondary'
 
-#messages
+%ul#messages.list-group.mt-3
   = render @room.messages
 
-= turbo_frame_tag "new_message", src: new_room_message_path(@room), target: "_top"
+.card.mt-3
+  .card-body.pt-4
+    = turbo_frame_tag 'new_message', src: new_room_message_path(@room), target: '_top'

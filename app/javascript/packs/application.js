@@ -15,8 +15,6 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-console.log('Hello World from Webpacker')
-
 // app/javascript:
 // ├── packs:
 //   │   # only webpack entry files here
@@ -27,4 +25,19 @@ console.log('Hello World from Webpacker')
 //   └── stylesheets:
 //   │   └── my_styles.css
 //   └── images:
-//   └── logo.svg
+//      └── logo.svg
+
+import * as bootstrap from "bootstrap"
+import "../stylesheets/application"
+
+document.addEventListener("DOMContentLoaded", function(event) {
+  const tooltipElements = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  tooltipElements.forEach((element) => {
+    new bootstrap.Tooltip(element)
+  })
+
+  const popoverElements = document.querySelectorAll('[data-bs-toggle="popover"]')
+  popoverElements.forEach((element) => {
+    new bootstrap.Popover(element)
+  })
+});

@@ -2,7 +2,9 @@
   Editing: #{@room.name}
 
 = turbo_frame_tag "room" do
-  = render 'form', room: @room
+  .card.mt-2
+    .card-body
+      = render 'form', room: @room
 
 = link_to 'Show', @room
 |
